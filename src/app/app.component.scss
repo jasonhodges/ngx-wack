@@ -1,3 +1,16 @@
+@import '~@angular/material/prebuilt-themes/purple-green.css';
+@import '~@angular/material/theming';
+
+/* Define a Sass map for all our stoopid drawers.
+  First value is the 500 color of each Material theme color.
+*/
+$drawers: (
+  alpha: (#673ab7, $white-87-opacity), // $mat-deep-purple
+  beta: (#00bcd4, $white-87-opacity), // $mat-cyan
+  charlie: (#ff5722, $white-87-opacity), // $mat-deep-orange
+  delta: (#4caf50, $white-87-opacity) // $mat-green
+);
+
 .example-sidenav-fab-container {
   width: 850px;
   height: 100vh;
@@ -12,4 +25,14 @@
 .example-sidenav-fab-container md-sidenav {
   display: flex;
   overflow: visible;
+}
+
+@each $name, $colors in $drawers {
+  $bgcolor: nth($colors, 1);
+  $fontcolor: nth($colors, 2);
+
+  .sidenav-#{$name} {
+    background-color: $bgcolor;
+    color: $fontcolor;
+  }
 }
